@@ -1,0 +1,63 @@
+\section{Dados de entrada}
+% START OF COMMENTS
+\begin{comment}
+O sistema de planejamento vai receber dois archivos de entrada. O primeiro é o problema descrito na linguagem STRIPS e o segundo é uma possível situação (com estado inicial e meta) para fazer a busca de solução.
+
+\subsection{Linguagem STRIPS}
+\label{subsec:strips}
+	O archivo de entrada com o problema descrito vai ter a seguinte forma: \\
+		\begin{lstlisting}[ caption = Estructura de archivo STRIPS , label = lst:strips ]
+			( define ( domain [domain_name] ) |\label{code:stripsdomain}|
+				( :requirements [list_of_requirements] ) |\label{code:stripsreq}|
+				( :types [list_of_types] ) |\label{code:stripstypes}|
+				( :predicates
+					[list_of_predicates] |\label{code:stripspred}|
+				)
+				[list_of_actions] |\label{code:stripsactions}|
+			)
+		\end{lstlisting}
+	Na linha~\ref{code:stripsdomain} vai o nome do dominio e na linha~\ref{code:stripsreq} uma lista de requerimentos (mas não vai ser usada neste trabalho). As seguinte linhas são as principais para descrever o problema.
+	Linha~\ref{code:stripstypes} tem uma lista dos tipos de dados que terá o problema e os tipos que vão receber as ações e fluentes. Por exemplo, para o problema dos blocos (ler \cite{USPLeliane15}) temos:
+		\begin{lstlisting}
+			( :types block )
+		\end{lstlisting}
+	Da mesma forma temos a linha~\ref{code:stripspred} no bloco~\ref{lst:strips} que contem uma lista de fluentes com seus parámetros e tipos de cada um. Por exemplo para o problema anterior:
+		\begin{lstlisting}[ caption = Lista de fluentes do problema ]
+			( :predicates
+				( on ?x - block ?y - block )
+				( ontable ?x - block )
+				( clear ?x - block )
+				( handempty )
+				( holding ?x - block )
+			)
+		\end{lstlisting}
+	No bloco~\ref{lst:stripsaction} se mostra a definição da ação ${pick\-up}$ do problema. Além, cada ação sempre vai ter uma lista de parâmetros com seus tipos, seus precondições e seus efeitos. Por último, a lista de ações vai na linha~\ref{code:stripsactions} no bloco~\ref{lst:strips}.
+		\begin{lstlisting}[ caption = Descrição de ação , label = lst:stripsaction ]
+			( :action pick-up
+				:parameters ( ?x - block )
+				:precondition ( and
+					( clear ?x )
+					( ontable ?x )
+					( handempty )
+				)
+				:effect ( and
+					( not ( ontable ?x ) )
+					( not ( clear ?x ) )
+					( not ( handempty ) )
+					( holding ?x )
+				)
+			)
+		\end{lstlisting}
+	
+\subsection{Estado inicial e meta}
+	Como se mostrou em~\ref{subsec:strips} se tem fluentes. Estas fluentes vai ser usadas para definir o estado inicial e a meta. Por exemplo para o problema dos blocos podemos ter:
+		\begin{lstlisting}[ caption = Archivo com estado inicial e meta ]
+			# Estado inicial |\label{code:initstate}|
+			clear_a ; clear_b ; ontable_a ; ontable_ b ; handempty
+			# Meta |\label{code:meta}|
+			on_a_b
+		\end{lstlisting}
+	As linhas~\ref{code:initstate} e~\ref{code:meta} são só referenciáveis e não ter que estar no archivo de entrada.
+	Com ambos archivos o sistema tem que dar uma solução. A continuação se explicará a implementação do sistema de planejamento.
+% END OF COMMENTS
+\end{comment}
