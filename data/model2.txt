@@ -1,0 +1,14 @@
+age:marital-status
+marital-status:workclass
+workclass:relationship,hours-per-week
+hours-per-week:capital-gain,capital-loss
+native-country:occupation,education,education-num,race
+race:education
+sex:workclass
+relationship:capital-gain,capital-loss
+occupation:capital-gain,capital-loss
+education-num:education
+education:marital-status,education-num
+capital-gain:annual-income
+capital-loss:annual-income
+annual-income:
