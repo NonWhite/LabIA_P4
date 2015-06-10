@@ -1,0 +1,191 @@
+Pre-processing ../data/training.csv
+TOTAL ROWS =   32561
+REMOVED ROWS =  2399
+FILTER ROWS =  30162
+Created ../data/training_new.csv!!!
+Pre-processing ../data/test.csv
+TOTAL ROWS =   16281
+REMOVED ROWS =  1221
+FILTER ROWS =  15060
+Adding test rows from ['../data/test.csv']
+TEST ROWS = 15060
+Loading model from ../data/model1.txt
+Calculating P( ['workclass'] | ['marital-status', 'race'] )
+^CTraceback (most recent call last):
+File "evaluator.py", line 138, in <module>
+evaluator.loadAndTestModel( mod )
+File "evaluator.py", line 128, in loadAndTestModel
+self.trainmodel()
+File "evaluator.py", line 40, in trainmodel
+self.calculateprobabilities( xi , pa_xi )
+File "evaluator.py", line 72, in calculateprobabilities
+self.probs[ xkey ][ xval ][ str( y ) ] = self.conditional_prob( xdict , y )
+File "evaluator.py", line 87, in conditional_prob
+pnum = len( self.query( numerator ) ) + self.bdeuprior( numerator )
+File "evaluator.py", line 96, in query
+if all( item in row.items() for item in filters.items() ) :
+KeyboardInterrupt
+MacBook-Pro:code nonwhite$
+MacBook-Pro:code nonwhite$
+MacBook-Pro:code nonwhite$ python evaluator.py
+Pre-processing ../data/training.csv
+TOTAL ROWS =   32561
+REMOVED ROWS =  2399
+FILTER ROWS =  30162
+Created ../data/training_new.csv!!!
+Pre-processing ../data/test.csv
+TOTAL ROWS =   16281
+REMOVED ROWS =  1221
+FILTER ROWS =  15060
+Adding test rows from ['../data/test.csv']
+TEST ROWS = 15060
+Loading model from ../data/model1.txt
+Calculating P( ['workclass'] | ['marital-status', 'race'] )
+CONT = 245
+Calculating P( ['relationship'] | ['sex'] )
+CONT = 12
+Calculating P( ['age'] | [] )
+CONT = 2
+Calculating P( ['capital-gain'] | ['workclass', 'occupation'] )
+CONT = 196
+Calculating P( ['sex'] | [] )
+CONT = 2
+Calculating P( ['annual-income'] | ['hours-per-week', 'capital-gain', 'capital-loss'] )
+CONT = 16
+Calculating P( ['hours-per-week'] | ['workclass', 'sex'] )
+CONT = 28
+Calculating P( ['race'] | ['native-country'] )
+CONT = 205
+Calculating P( ['native-country'] | [] )
+CONT = 41
+Calculating P( ['education-num'] | [] )
+CONT = 2
+Calculating P( ['capital-loss'] | ['workclass', 'occupation'] )
+CONT = 196
+Calculating P( ['education'] | ['education-num'] )
+CONT = 32
+Calculating P( ['marital-status'] | ['age', 'relationship'] )
+CONT = 84
+Calculating P( ['occupation'] | ['native-country', 'education'] )
+^CTraceback (most recent call last):
+File "evaluator.py", line 138, in <module>
+evaluator.loadAndTestModel( mod )
+File "evaluator.py", line 128, in loadAndTestModel
+self.trainmodel()
+File "evaluator.py", line 40, in trainmodel
+self.calculateprobabilities( xi , pa_xi )
+File "evaluator.py", line 72, in calculateprobabilities
+self.probs[ xkey ][ xval ][ str( y ) ] = self.conditional_prob( xdict , y )
+File "evaluator.py", line 88, in conditional_prob
+pden = len( self.query( denominator ) ) + self.bdeuprior( denominator )
+File "evaluator.py", line 96, in query
+if all( item in row.items() for item in filters.items() ) :
+File "evaluator.py", line 96, in <genexpr>
+if all( item in row.items() for item in filters.items() ) :
+KeyboardInterrupt
+MacBook-Pro:code nonwhite$
+MacBook-Pro:code nonwhite$ python evaluator.py
+Pre-processing ../data/training.csv
+TOTAL ROWS =   32561
+REMOVED ROWS =  2399
+FILTER ROWS =  30162
+Created ../data/training_new.csv!!!
+Pre-processing ../data/test.csv
+TOTAL ROWS =   16281
+REMOVED ROWS =  1221
+FILTER ROWS =  15060
+Adding test rows from ['../data/test.csv']
+TEST ROWS = 15060
+Loading model from ../data/model1.txt
+Calculating P( ['workclass'] | ['marital-status', 'race'] )
+CONT = 245
+Calculating P( ['relationship'] | ['sex'] )
+CONT = 12
+Calculating P( ['age'] | [] )
+CONT = 2
+Calculating P( ['capital-gain'] | ['workclass', 'occupation'] )
+CONT = 196
+Calculating P( ['sex'] | [] )
+CONT = 2
+Calculating P( ['annual-income'] | ['hours-per-week', 'capital-gain', 'capital-loss'] )
+CONT = 16
+Calculating P( ['hours-per-week'] | ['workclass', 'sex'] )
+CONT = 28
+Calculating P( ['race'] | ['native-country'] )
+CONT = 205
+Calculating P( ['native-country'] | [] )
+CONT = 41
+Calculating P( ['education-num'] | [] )
+CONT = 2
+Calculating P( ['capital-loss'] | ['workclass', 'occupation'] )
+CONT = 196
+Calculating P( ['education'] | ['education-num'] )
+CONT = 32
+Calculating P( ['marital-status'] | ['age', 'relationship'] )
+CONT = 84
+Calculating P( ['occupation'] | ['native-country', 'education'] )
+CONT = 9184
+Testing model with test data
+Data Log-Likelihood = -163794.411741
+Loading model from ../data/model2.txt
+Calculating P( ['workclass'] | ['marital-status', 'sex'] )
+CONT = 98
+Calculating P( ['relationship'] | ['workclass'] )
+CONT = 42
+Calculating P( ['age'] | [] )
+CONT = 2
+Calculating P( ['capital-gain'] | ['hours-per-week', 'relationship', 'occupation'] )
+CONT = 336
+Calculating P( ['sex'] | [] )
+CONT = 2
+Calculating P( ['annual-income'] | ['capital-gain', 'capital-loss'] )
+CONT = 8
+Calculating P( ['hours-per-week'] | ['workclass'] )
+CONT = 14
+Calculating P( ['race'] | ['native-country'] )
+CONT = 205
+Calculating P( ['native-country'] | [] )
+CONT = 41
+Calculating P( ['education-num'] | ['native-country'] )
+CONT = 82
+Calculating P( ['capital-loss'] | ['hours-per-week', 'relationship', 'occupation'] )
+CONT = 336
+Calculating P( ['education'] | ['native-country', 'race', 'education-num'] )
+CONT = 6560
+Calculating P( ['marital-status'] | ['age', 'education'] )
+CONT = 224
+Calculating P( ['occupation'] | ['native-country'] )
+CONT = 574
+Testing model with test data
+Data Log-Likelihood = -178879.851139
+Loading model from ../data/model3.txt
+Calculating P( ['workclass'] | ['marital-status', 'occupation', 'education-num', 'education'] )
+CONT = 21952
+Calculating P( ['relationship'] | ['race'] )
+CONT = 30
+Calculating P( ['age'] | [] )
+CONT = 2
+Calculating P( ['capital-gain'] | ['age', 'native-country', 'sex'] )
+CONT = 328
+Calculating P( ['sex'] | [] )
+CONT = 2
+Calculating P( ['annual-income'] | ['hours-per-week'] )
+CONT = 4
+Calculating P( ['hours-per-week'] | ['workclass'] )
+CONT = 14
+Calculating P( ['race'] | ['native-country'] )
+CONT = 205
+Calculating P( ['native-country'] | [] )
+CONT = 41
+Calculating P( ['education-num'] | ['capital-gain', 'capital-loss'] )
+CONT = 8
+Calculating P( ['capital-loss'] | ['age', 'native-country', 'sex'] )
+CONT = 328
+Calculating P( ['education'] | ['capital-gain', 'capital-loss'] )
+CONT = 64
+Calculating P( ['marital-status'] | ['relationship'] )
+CONT = 42
+Calculating P( ['occupation'] | [] )
+CONT = 14
+Testing model with test data
+Data Log-Likelihood = -180462.157132
