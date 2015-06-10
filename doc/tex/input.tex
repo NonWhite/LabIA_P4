@@ -1,63 +1,40 @@
 \section{Dados de entrada}
-% START OF COMMENTS
-\begin{comment}
-O sistema de planejamento vai receber dois archivos de entrada. O primeiro é o problema descrito na linguagem STRIPS e o segundo é uma possível situação (com estado inicial e meta) para fazer a busca de solução.
+Os dados de entrada foram extraídos da página Machine Learning Repository~\cite{UCImain} e o conjunto de dados que será usado neste trabalho é Adulto~\cite{UCIadult96}. Este conjunto tem $48842$ instancias, mas algumas não tem sua data completa. Todos os dados no conjunto são de um censo no ano 1994 feito por Barry Becker para determinar se uma pessoa tem mais de 50 mil en dinheiro por ano.
 
-\subsection{Linguagem STRIPS}
-\label{subsec:strips}
-	O archivo de entrada com o problema descrito vai ter a seguinte forma: \\
-		\begin{lstlisting}[ caption = Estructura de archivo STRIPS , label = lst:strips ]
-			( define ( domain [domain_name] ) |\label{code:stripsdomain}|
-				( :requirements [list_of_requirements] ) |\label{code:stripsreq}|
-				( :types [list_of_types] ) |\label{code:stripstypes}|
-				( :predicates
-					[list_of_predicates] |\label{code:stripspred}|
-				)
-				[list_of_actions] |\label{code:stripsactions}|
-			)
-		\end{lstlisting}
-	Na linha~\ref{code:stripsdomain} vai o nome do dominio e na linha~\ref{code:stripsreq} uma lista de requerimentos (mas não vai ser usada neste trabalho). As seguinte linhas são as principais para descrever o problema.
-	Linha~\ref{code:stripstypes} tem uma lista dos tipos de dados que terá o problema e os tipos que vão receber as ações e fluentes. Por exemplo, para o problema dos blocos (ler \cite{USPLeliane15}) temos:
-		\begin{lstlisting}
-			( :types block )
-		\end{lstlisting}
-	Da mesma forma temos a linha~\ref{code:stripspred} no bloco~\ref{lst:strips} que contem uma lista de fluentes com seus parámetros e tipos de cada um. Por exemplo para o problema anterior:
-		\begin{lstlisting}[ caption = Lista de fluentes do problema ]
-			( :predicates
-				( on ?x - block ?y - block )
-				( ontable ?x - block )
-				( clear ?x - block )
-				( handempty )
-				( holding ?x - block )
-			)
-		\end{lstlisting}
-	No bloco~\ref{lst:stripsaction} se mostra a definição da ação ${pick\-up}$ do problema. Além, cada ação sempre vai ter uma lista de parâmetros com seus tipos, seus precondições e seus efeitos. Por último, a lista de ações vai na linha~\ref{code:stripsactions} no bloco~\ref{lst:strips}.
-		\begin{lstlisting}[ caption = Descrição de ação , label = lst:stripsaction ]
-			( :action pick-up
-				:parameters ( ?x - block )
-				:precondition ( and
-					( clear ?x )
-					( ontable ?x )
-					( handempty )
-				)
-				:effect ( and
-					( not ( ontable ?x ) )
-					( not ( clear ?x ) )
-					( not ( handempty ) )
-					( holding ?x )
-				)
-			)
-		\end{lstlisting}
+\subsection{Características}
+	As características do conjunto de dados na página são:
+	\begin{enumerate}
+		\item Age (AG): a idade da pessoa
+		\item Workclass (W): tipo de empleado que a pessoa é
+		\item Fnlwgt (F): Não se da descrição sobre esta característica
+		\item Education (ED): Máximo nível de educação a pessoa tem
+		\item Education-num (EN): Máximo nível de educação a pessoa tem em forma numérica
+		\item Marital-status (M): Estado civil da pessoa
+		\item Occupation (O): A ocupação da pessoa
+		\item Relationship (RE): Relações de familia como esposa ou filho
+		\item Race (RA): Descrição da raza da pessoa
+		\item Sex (S): sexo biológico
+		\item Capital-gain (CG): Ganhos de capital
+		\item Capital-loss (CL): Perdas de capital
+		\item Hours-per-week (H): Horas trabalhadas por semana
+		\item Native-country (N): Pais de origem da pessoa
+		\item Annual-income (AI): Diz se a pessoa tem mais de 50 mil por ano
+	\end{enumerate}
+	Das características anteriores, não será usada a terceira (Fnlwgt) por não ter suficiente informação sobre ela. Por outro lado, algumas características tem valores discretos, mas algumas como ${Age }$ e ${Capital-gain}$ são valores continuos e portanto tem que ser discretizados, o que será feito na subseção~\ref{subsec:discret}.
+
+\subsection{Discretização de características}
+\label{subsec:discret}
+	As características numéricas são:
+	\begin{itemize}
+		\item Age (AG)
+		\item Education-num (EN)
+		\item Capital-gain (CF)
+		\item Capital-loss (CL)
+		\item Hours-per-week (H)
+	\end{itemize}
+	Para cada um de eles, se calculo sua mediana e foi mudado para uma variável booleana. Então para uma característica $X_i$, temos que ${Median}( X_i )$ é sua mediana e todos seus valores mudaram da forma $x_{ij} = ( 1$ se $x_{ij} > {Median}( X_i )$ e $0$ no caso contrario ).
 	
-\subsection{Estado inicial e meta}
-	Como se mostrou em~\ref{subsec:strips} se tem fluentes. Estas fluentes vai ser usadas para definir o estado inicial e a meta. Por exemplo para o problema dos blocos podemos ter:
-		\begin{lstlisting}[ caption = Archivo com estado inicial e meta ]
-			# Estado inicial |\label{code:initstate}|
-			clear_a ; clear_b ; ontable_a ; ontable_ b ; handempty
-			# Meta |\label{code:meta}|
-			on_a_b
-		\end{lstlisting}
-	As linhas~\ref{code:initstate} e~\ref{code:meta} são só referenciáveis e não ter que estar no archivo de entrada.
-	Com ambos archivos o sistema tem que dar uma solução. A continuação se explicará a implementação do sistema de planejamento.
-% END OF COMMENTS
-\end{comment}
+\subsection{Dados de treinamento e dados de test}
+	Para poder testar e comparar as redes bayesianas que serão construídas nas seguintes seções temos que dividir os dados em dois conjuntos. O primeiro será usado para treinar e calcular todas probabilidades da rede bayesiana. Enquanto o segundo conjunto será usado para testar cada uma das redes bayesianas construídas. Para este trabalho os dados serão divididos em um 65\% para treinar e um 35\% para testar as redes.
+
+\clearpage
