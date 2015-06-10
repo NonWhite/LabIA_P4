@@ -102,6 +102,7 @@ class Extractor :
 				row[ field ] = ( 1 if int( row[ field ] ) > self.stats[ field ][ 'median' ] else 0 )
 	
 	def export( self ) :
+		if not self.savefiltered : return
 		with open( self.outfile , 'w' ) as f :
 			f.write( ','.join( self.fields ) + '\n' )
 			for row in self.rows :
@@ -112,6 +113,7 @@ class Extractor :
 		print "TOTAL ENTITIES = %s" % len( self.rows )
 		for field in self.stats :
 			print " ======== FIELD: %s ======== " % field
+			print " DIFERENT VALUES = %s" % len( self.stats[ field ].keys() )
 			if self.fieldtypes[ field ] == LITERAL_FIELD :
 				values = [ ( count , val ) for ( val , count ) in self.stats[ field ].iteritems() ]
 				values = sorted( values , reverse = True )
