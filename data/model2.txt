@@ -8,7 +8,7 @@ sex:workclass
 relationship:capital-gain,capital-loss
 occupation:capital-gain,capital-loss
 education-num:education
-education:marital-status,education-num
+education:marital-status
 capital-gain:annual-income
 capital-loss:annual-income
 annual-income:
