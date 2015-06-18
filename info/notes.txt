@@ -1,0 +1,17 @@
+Eugene Charniak, 1991.
+Bayesian networks without tears. AI Magazine, 12:4, pp. 50-63.
+
+Marc Tessyer e Daphne Koller.
+Ordering-based search: A simple and effective algorithm for learning Bayesian networks. In Proceedings of the Twenty-First Conference on Uncertainty in Artificial Intelligence (UAI 20115), 2005.
+
+Kevin B. Korb e Ann E. Nicholson, 2010.
+Bayesian Artificial Intelligence, CRC Press. Capítulo 2 (redes bayesianas)
+
+Adnan Darwiche, 2009.
+Modeling and reasoning with Bayesian networks. Cambridge Press.
+
+Daphne Koller & Nir Friedman, 2009.
+Probabilistic graphical models. MIT Press. Capítulo de Introdução
+
+Marco Scutari & Jean-Baptiste Denis, 2015.
+Bayesian networks with examples in R. CRC Press.
