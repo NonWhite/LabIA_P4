@@ -31,6 +31,7 @@ class Evaluator( Extractor ) :
 				for ch in childs :
 					self.network[ field ][ 'childs' ].append( ch )
 					self.network[ ch ][ 'parents' ].append( field )
+		self.topological = topological( self.network , self.fields )
 		#for field in self.fields :
 		#	print "%s: %s" % ( field , self.network[ field ][ 'childs' ] )
 
@@ -72,8 +73,10 @@ class Evaluator( Extractor ) :
 
 	def conditional_prob( self , x , y ) :
 		xkey , xval = x.keys()[ 0 ] , x.values()[ 0 ]
-		if str( y ) in self.probs[ xkey ][ xval ] : return self.probs[ xkey ][ xval ][ str( y ) ]
+		cond = self.hashed( y )
+		if cond in self.probs[ xkey ][ xval ] : return self.probs[ xkey ][ xval ][ cond ]
 		self.cont += 1
+		if self.cont % 1000 == 0 : print "CONT = %s" % self.cont
 		numerator = copy( x )
 		for key in y : numerator[ key ] = y[ key ]
 		denominator = y
@@ -83,10 +86,17 @@ class Evaluator( Extractor ) :
 		else :
 			pnum = len( self.query( numerator ) ) + self.bdeuprior( numerator )
 			pden = len( self.query( denominator ) ) + self.bdeuprior( denominator )
-		pnum = float( pnum )
-		pden = float( pden )
-		self.probs[ xkey ][ xval ][ str( y ) ] = pnum / pden
-		return pnum / pden
+		resp = float( pnum ) / float( pden )
+		self.probs[ xkey ][ xval ][ cond ] = resp
+		return resp
+
+	def hashed( self , cond ) :
+		resp = ''
+		if not cond : return resp
+		for field in self.topological :
+			if field not in cond : continue
+			resp += "%s:%s, " % ( field , cond[ field ] )
+		return resp[ :-2 ]
 	
 	def query( self , filters ) :
 		resp = []
@@ -126,29 +136,40 @@ class Evaluator( Extractor ) :
 		self.trainmodel()
 		return self.testmodel()
 	
-	# TODO: Generate data
-	def generateData( self , modelname ) :
+	def synthethicData( self , modelname ) :
 		modelname = os.path.basename( modelname )
 		rows_to_generate = int( GENERATED_DATA * TRAINING_DATA_PERCENTAGE )
-		rows = [ dict( [ ( field , '' ) for field in self.fields ] ) ] * rows_to_generate
-		order_fields = sorted( self.fields , key = lambda field: len( self.network[ field ][ 'parents' ] ) )
-		for field in order_fields :
-			implies = self.evaluate( [ field ] )
-			condition = self.evaluate( self.network[ field ][ 'parents' ] )
-			for xdict in implies :
-				if not condition : condition = [ {} ]
-				for y in condition :
-					prob = self.conditional_prob( xdict , y )
-					values_to_put = prob * rows_to_generate
-					cont = 0
-			
-		with open( GEN_TRAINING_FILE % modelname , 'w' ) as f :
-			for x in range( rows_to_generate ) :
-				continue
+		self.generateData( GEN_TRAINING_FILE % modelname , rows_to_generate )
 		rows_to_generate = int( GENERATED_DATA * TEST_DATA_PERCENTAGE )
-		with open( GEN_TEST_FILE % modelname , 'w' ) as f :
-			for x in range( rows_to_generate ) :
-				continue
+		self.generateData( GEN_TEST_FILE % modelname , rows_to_generate )
+	
+	def generateData( self , filename , num_rows ) :
+		print "Generating data (%s rows) in %s" % ( num_rows , filename )
+		with open( filename , 'w' ) as f :
+			f.write( ','.join( self.topological ) + '\n' )
+			for x in range( num_rows ) :
+				row = self.generateRow()
+				line = [ row[ field ] for field in self.topological ]
+				f.write( ','.join( line ) + '\n' )
+	
+	def generateRow( self ) :
+		row = {}
+		for field in self.topological :
+			row[ field ] = self.generateValue( field , row )
+		return row
+
+	def generateValue( self , field , row ) :
+		parents = dict( [ ( f , row[ f ] ) for f in self.network[ field ][ 'parents' ] ] )
+		values = self.evaluate( [ field ] )
+		probs = []
+		for val in values :
+			cond_prob = self.conditional_prob( val , parents )
+			probs.append( ( val[ field ] , int( SIZE_TO_GET_RAND_VALUE * cond_prob ) ) )
+		rand = []
+		for ( val , q ) in probs :
+			for x in range( q ) :
+				rand.append( val )
+		return str( shuffle( rand )[ 0 ] )
 	
 if __name__ == "__main__" :
 	training_data = TRAINING_FILE
@@ -161,4 +182,4 @@ if __name__ == "__main__" :
 	evaluator.addTrainingSet( [ test_data ] )
 	for mod in models :
 		evaluator.loadAndTestModel( mod )
-		evaluator.generateData( mod )
+		evaluator.synthethicData( mod )
