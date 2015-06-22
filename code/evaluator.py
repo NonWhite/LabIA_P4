@@ -2,6 +2,9 @@ from utils import *
 from copy import deepcopy as copy
 from math import log
 from extractor import Extractor
+import sys
+import os.path
+from random import randint as random
 
 class Evaluator( Extractor ) :
 	def addTrainingSet( self , testfile ) :
@@ -33,7 +36,6 @@ class Evaluator( Extractor ) :
 
 	def trainmodel( self ) :
 		self.probs = dict( [ ( field , {} ) for field in self.fields ] )
-		# TODO: Get a topological order
 		for field in self.network :
 			xi = [ field ]
 			pa_xi = [ f for f in self.network[ field ][ 'parents' ] ]
@@ -53,27 +55,25 @@ class Evaluator( Extractor ) :
 		return loglikelihood
 	
 	def calculateprobabilities( self , xsetfield , ysetfield ) :
+		print "Calculating P( %s | %s )" % ( xsetfield , ysetfield )
 		implies = self.evaluate( xsetfield )
 		condition = self.evaluate( ysetfield )
-		print "Calculating P( %s | %s )" % ( xsetfield , ysetfield )
 		self.cont = 0
 		for xdict in implies :
 			xkey = xdict.keys()[ 0 ] # Supose it only has one field in X
-			xval = xdict[ xkey ] 
+			xval = xdict.values()[ 0 ]
 			if xval not in self.probs[ xkey ] : self.probs[ xkey ][ xval ] = {}
 			if not condition :
-				self.probs[ xkey ][ xval ][ str( {} ) ] = self.conditional_prob( xdict , {} )
-				#self.probs[ xkey ][ xval ].append( [ [] , self.conditional_prob( xdict , {} ) ] )
+				self.conditional_prob( xdict , {} )
 				continue
 			for y in condition :
-				self.probs[ xkey ][ xval ][ str( y ) ] = self.conditional_prob( xdict , y )
-				#self.probs[ xkey ][ xval ].append( [ y , self.conditional_prob( xdict , y ) ] )
+				self.conditional_prob( xdict , y )
 		print "CONT = %s" % self.cont
 
 	def conditional_prob( self , x , y ) :
-		xkey , xval = x.keys()[ 0 ] , x[ x.keys()[ 0 ] ]
+		xkey , xval = x.keys()[ 0 ] , x.values()[ 0 ]
 		if str( y ) in self.probs[ xkey ][ xval ] : return self.probs[ xkey ][ xval ][ str( y ) ]
-		self.cont +=1
+		self.cont += 1
 		numerator = copy( x )
 		for key in y : numerator[ key ] = y[ key ]
 		denominator = y
@@ -85,6 +85,7 @@ class Evaluator( Extractor ) :
 			pden = len( self.query( denominator ) ) + self.bdeuprior( denominator )
 		pnum = float( pnum )
 		pden = float( pden )
+		self.probs[ xkey ][ xval ][ str( y ) ] = pnum / pden
 		return pnum / pden
 	
 	def query( self , filters ) :
@@ -123,13 +124,41 @@ class Evaluator( Extractor ) :
 	def loadAndTestModel( self , modelfile ) :
 		self.loadmodel( modelfile )
 		self.trainmodel()
-		self.testmodel()
+		return self.testmodel()
+	
+	# TODO: Generate data
+	def generateData( self , modelname ) :
+		modelname = os.path.basename( modelname )
+		rows_to_generate = int( GENERATED_DATA * TRAINING_DATA_PERCENTAGE )
+		rows = [ dict( [ ( field , '' ) for field in self.fields ] ) ] * rows_to_generate
+		order_fields = sorted( self.fields , key = lambda field: len( self.network[ field ][ 'parents' ] ) )
+		for field in order_fields :
+			implies = self.evaluate( [ field ] )
+			condition = self.evaluate( self.network[ field ][ 'parents' ] )
+			for xdict in implies :
+				if not condition : condition = [ {} ]
+				for y in condition :
+					prob = self.conditional_prob( xdict , y )
+					values_to_put = prob * rows_to_generate
+					cont = 0
+			
+		with open( GEN_TRAINING_FILE % modelname , 'w' ) as f :
+			for x in range( rows_to_generate ) :
+				continue
+		rows_to_generate = int( GENERATED_DATA * TEST_DATA_PERCENTAGE )
+		with open( GEN_TEST_FILE % modelname , 'w' ) as f :
+			for x in range( rows_to_generate ) :
+				continue
 	
 if __name__ == "__main__" :
-	files = [ 'training.csv' ] 
-	sources = [ DEFAULT_DATA_DIR + f for f in files ]
-	evaluator = Evaluator( sources , savefilter = True , ommit = [ 'fnlgwt' ] , discretize = True )
-	evaluator.addTrainingSet( [ DEFAULT_DATA_DIR + 'test.csv' ] )
-	models = [ DEFAULT_DATA_DIR + f for f in [ 'model1.txt' , 'model2.txt' , 'model3.txt' ] ]
+	training_data = TRAINING_FILE
+	test_data = TEST_FILE
+	models = MODELS
+	if len( sys.argv ) > 1 :
+		( training_data , test_data ) = sys.argv[ 1: ]
+
+	evaluator = Evaluator( [ training_data ] , savefilter = True , ommit = [ 'fnlgwt' ] , discretize = True )
+	evaluator.addTrainingSet( [ test_data ] )
 	for mod in models :
 		evaluator.loadAndTestModel( mod )
+		evaluator.generateData( mod )

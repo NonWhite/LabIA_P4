@@ -9,7 +9,7 @@ class Extractor :
 		self.rows = []
 		self.ommitedfields = ommit
 		self.discretize = discretize
-		self.outfile = DEFAULT_DATA_DIR + fullout
+		self.outfile = DATA_DIR + fullout
 		self.init()
 	
 	def init( self ) :
@@ -125,7 +125,6 @@ class Extractor :
 				print "Median = %s" % self.stats[ field ][ 'median' ]
 	
 if __name__ == "__main__" :
-	files = [ 'training.csv' , 'test.csv' ]
-	sources = [ DEFAULT_DATA_DIR + f for f in files ]
+	sources = [ TRAINING_FILE , TEST_FILE ]
 	extractor = Extractor( sources , savefilter = True , ommit = [ 'fnlgwt' ] , discretize = True )
 	extractor.printstats()
