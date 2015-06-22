@@ -1,5 +1,6 @@
 from utils import *
 from copy import deepcopy as copy
+import os
 
 class Extractor :
 	def __init__( self , sources , savefilter = False , ommit = [] , discretize = True , fullout = 'out.csv' ) :
@@ -21,7 +22,8 @@ class Extractor :
 	def preprocess( self ) :
 		for source in self.sources :
 			print "Pre-processing %s" % source
-			outfile = ( source.replace( '.csv' , '_new.csv' ) if self.savefiltered else None )
+			ext = os.path.splitext( source )[ 1 ]
+			outfile = ( source.replace( ext , '_new' + ext ) if self.savefiltered else None )
 			out = ( open( outfile , 'w' ) if self.savefiltered else None )
 			with open( source , 'r' ) as f :
 				lines = f.readlines()
