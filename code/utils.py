@@ -1,10 +1,12 @@
 from random import randint
 
+''' ======== FILES PARAMETERS ======== '''
 DATA_DIR = '../data/'
 TRAINING_FILE = DATA_DIR + 'training.csv'
 TEST_FILE = DATA_DIR + 'test.csv'
 MODELS = [ DATA_DIR + x for x in [ 'model1.txt' , 'model2.txt' , 'model3.txt' ] ]
 
+''' ======== CONSTANTS ======== '''
 FIELD_DELIMITER = ','
 
 NUMERIC_FIELD = 'numeric'
@@ -14,15 +16,20 @@ INT_MAX = 200000000000
 
 ESS = 1.0
 
+EPSILON = 1e-7
+
+''' ======== GENERATION PARAMETERS ======== '''
 TRAINING_DATA_PERCENTAGE = 0.65
 TEST_DATA_PERCENTAGE = 1 - TRAINING_DATA_PERCENTAGE
-
 GENERATED_DATA = 30000
 GEN_TRAINING_FILE = DATA_DIR + 'gentraining_%s'
 GEN_TEST_FILE = DATA_DIR + 'gentest_%s'
 SIZE_TO_GET_RAND_VALUE = 100
 
-MAX_NUM_PARENTS = 4
+''' ======== LEARNING PARAMETERS ======== '''
+MAX_NUM_PARENTS = 3
+NUM_ORDERING_SAMPLES = 10
+NUM_GREEDY_RESTARTS = 10
 
 def shuffle( arr ) :
 	new_arr = list( arr )
@@ -48,3 +55,6 @@ def dfs( graph , node , visited , indegree , topo_order ) :
 		indegree[ child ] -= 1
 		if indegree[ child ] == 0 :
 			dfs( graph , child , visited , indegree , topo_order )
+
+def compare( fa , fb ) :
+	return -1 if fa + EPSILON < fb else 1 if fa - EPSILON > fb else 0
