@@ -1,0 +1,744 @@
+Building network for ../data/gentraining_model1.txt
+Building network #1
+SCORE = -181433.947553
+age: sex
+education-num: 
+sex: 
+native-country: relationship,annual-income,capital-loss,workclass,education-num,occupation
+education: age,capital-gain,race,occupation
+relationship: annual-income,capital-loss,marital-status,workclass,hours-per-week,age,capital-gain,race,education-num,sex
+marital-status: workclass,education,age
+race: sex
+workclass: education,capital-gain,education-num
+hours-per-week: 
+occupation: 
+capital-gain: 
+capital-loss: marital-status,hours-per-week,education,race,occupation
+annual-income: capital-loss,marital-status,hours-per-week
+Building network #2
+SCORE = -131246.969532
+age: annual-income,education,native-country
+education-num: capital-gain,workclass
+sex: age,annual-income,race,education,relationship
+native-country: capital-loss
+education: occupation,education-num,capital-loss
+relationship: hours-per-week,capital-gain
+marital-status: sex,age,annual-income,race,education,relationship,hours-per-week,occupation,native-country,workclass
+race: relationship,hours-per-week,occupation
+workclass: 
+hours-per-week: education-num
+occupation: native-country,education-num,capital-gain,workclass
+capital-gain: 
+capital-loss: 
+annual-income: race,capital-loss
+Building network #3
+SCORE = -133992.464547
+age: education,hours-per-week
+education-num: 
+sex: marital-status,relationship,age,capital-loss,occupation,capital-gain,hours-per-week
+native-country: annual-income
+education: occupation,education-num,native-country,race,annual-income
+relationship: age,capital-loss,education,workclass
+marital-status: relationship,age,capital-loss,education,occupation,workclass,native-country
+race: 
+workclass: native-country,capital-gain,hours-per-week
+hours-per-week: 
+occupation: education-num,workclass,capital-gain,race,annual-income
+capital-gain: race
+capital-loss: education-num
+annual-income: 
+Building network #4
+SCORE = -108603.141055
+age: 
+education-num: workclass,race,sex,annual-income
+sex: capital-gain
+native-country: 
+education: native-country
+relationship: education-num,age,hours-per-week,sex,native-country
+marital-status: relationship,education-num,workclass,age,hours-per-week,race,capital-loss,education,native-country,annual-income
+race: education
+workclass: hours-per-week,race,capital-loss,capital-gain
+hours-per-week: 
+occupation: marital-status,relationship,education-num,workclass,age,capital-loss,sex,capital-gain,education,annual-income
+capital-gain: 
+capital-loss: 
+annual-income: 
+Building network #5
+SCORE = -118182.61455
+age: 
+education-num: 
+sex: 
+native-country: 
+education: workclass,sex,capital-loss,education-num,occupation
+relationship: education,workclass,sex,capital-loss,race
+marital-status: hours-per-week,annual-income,capital-gain,relationship,education,workclass,race,age,native-country
+race: occupation
+workclass: sex,capital-loss,age,native-country,occupation
+hours-per-week: annual-income,capital-gain,relationship,education,race
+occupation: 
+capital-gain: 
+capital-loss: education-num
+annual-income: capital-gain,relationship,age,native-country,education-num
+Building network #6
+SCORE = -181449.839825
+age: sex,marital-status,capital-loss,native-country
+education-num: capital-gain,workclass,race,occupation
+sex: marital-status,capital-loss,education-num,race,education
+native-country: hours-per-week
+education: occupation,relationship
+relationship: 
+marital-status: capital-loss,education-num,capital-gain,workclass,annual-income,native-country,education
+race: annual-income,relationship
+workclass: race,annual-income,native-country,hours-per-week
+hours-per-week: 
+occupation: relationship,hours-per-week
+capital-gain: occupation
+capital-loss: education-num,capital-gain,workclass,education
+annual-income: 
+Building network #7
+SCORE = -124162.786797
+age: race
+education-num: native-country,capital-loss,capital-gain,hours-per-week
+sex: 
+native-country: relationship,occupation,annual-income
+education: marital-status,education-num,native-country,relationship,capital-loss,sex,age,race,workclass,annual-income
+relationship: sex,occupation,capital-gain,workclass
+marital-status: education-num,native-country,relationship,capital-loss,sex,occupation,age,hours-per-week
+race: 
+workclass: 
+hours-per-week: 
+occupation: capital-gain,age,race,annual-income,hours-per-week
+capital-gain: workclass
+capital-loss: 
+annual-income: 
+Building network #8
+SCORE = -175248.78661
+age: relationship,hours-per-week
+education-num: 
+sex: occupation
+native-country: capital-loss,age,relationship,education,annual-income,sex,occupation,race
+education: annual-income,workclass,capital-gain,race,education-num
+relationship: hours-per-week,education,annual-income,marital-status,sex,occupation,education-num
+marital-status: capital-gain
+race: 
+workclass: marital-status,capital-gain
+hours-per-week: education,workclass,marital-status
+occupation: race,education-num
+capital-gain: 
+capital-loss: age,relationship,hours-per-week,workclass,sex
+annual-income: 
+Building network #9
+SCORE = -103497.810423
+age: 
+education-num: 
+sex: relationship
+native-country: 
+education: marital-status,occupation,capital-gain,annual-income,race,education-num,hours-per-week,native-country
+relationship: 
+marital-status: occupation,capital-gain,annual-income,race,capital-loss,sex,relationship,age
+race: education-num,hours-per-week
+workclass: education,marital-status,occupation,race,education-num,sex,hours-per-week,age
+hours-per-week: native-country
+occupation: capital-gain,annual-income,capital-loss,sex,native-country
+capital-gain: capital-loss,relationship
+capital-loss: 
+annual-income: age
+Building network #10
+SCORE = -144446.759998
+age: 
+education-num: race,occupation
+sex: 
+native-country: education-num,relationship,sex
+education: native-country,education-num,relationship,race,annual-income,marital-status,occupation,capital-loss,hours-per-week,workclass,age
+relationship: race,annual-income,marital-status,sex,capital-loss,workclass
+marital-status: hours-per-week,workclass,age
+race: marital-status,sex
+workclass: 
+hours-per-week: 
+occupation: hours-per-week
+capital-gain: education,native-country,education-num,relationship,annual-income,occupation
+capital-loss: 
+annual-income: capital-loss,age
+Building network #11
+SCORE = -170412.886509
+age: native-country,annual-income,marital-status,education,sex
+education-num: hours-per-week,relationship
+sex: 
+native-country: annual-income,occupation,race,education-num
+education: education-num,sex
+relationship: 
+marital-status: race,education-num,sex,relationship
+race: capital-loss,education,workclass
+workclass: hours-per-week,relationship
+hours-per-week: 
+occupation: marital-status,race,capital-loss,education,workclass,hours-per-week
+capital-gain: age,native-country,annual-income,occupation,marital-status
+capital-loss: workclass
+annual-income: occupation,capital-loss
+Building network #12
+SCORE = -140118.997711
+age: marital-status,relationship,education
+education-num: capital-loss,education
+sex: education-num,capital-gain
+native-country: workclass,annual-income,race,hours-per-week,education-num,capital-loss
+education: 
+relationship: 
+marital-status: relationship,education
+race: 
+workclass: annual-income,race,hours-per-week,sex,marital-status
+hours-per-week: sex,age
+occupation: native-country,workclass,annual-income,race,hours-per-week,sex,age,education-num,capital-loss,capital-gain,marital-status
+capital-gain: 
+capital-loss: relationship
+annual-income: age,capital-gain
+Building network #13
+SCORE = -153254.631567
+age: 
+education-num: native-country,occupation,education
+sex: education-num,native-country,occupation,marital-status,relationship,annual-income
+native-country: occupation,marital-status,relationship,workclass
+education: capital-loss,capital-gain
+relationship: workclass,hours-per-week,race,capital-loss,age
+marital-status: relationship,annual-income,education,race,capital-loss,age
+race: 
+workclass: hours-per-week,education,age,capital-gain
+hours-per-week: 
+occupation: marital-status,annual-income,workclass,hours-per-week,race
+capital-gain: 
+capital-loss: capital-gain
+annual-income: 
+Building network #14
+SCORE = -168374.04567
+age: 
+education-num: occupation
+sex: workclass,capital-loss
+native-country: race,education-num
+education: sex,workclass,annual-income,marital-status,native-country,age,race,education-num,relationship,hours-per-week
+relationship: 
+marital-status: native-country,capital-loss,age,relationship,occupation
+race: 
+workclass: annual-income,marital-status,capital-loss,race,education-num,occupation
+hours-per-week: 
+occupation: hours-per-week
+capital-gain: education,sex,workclass,annual-income,age
+capital-loss: relationship
+annual-income: marital-status,native-country,hours-per-week
+Building network #15
+SCORE = -138207.262966
+age: relationship
+education-num: capital-gain,capital-loss,education,marital-status
+sex: occupation,education-num,capital-gain,capital-loss,race,marital-status
+native-country: 
+education: race,age,annual-income,workclass,native-country
+relationship: workclass
+marital-status: age,relationship,native-country,hours-per-week
+race: annual-income
+workclass: hours-per-week
+hours-per-week: 
+occupation: education-num,capital-gain,capital-loss,education,race,marital-status,workclass,hours-per-week
+capital-gain: education,age,native-country
+capital-loss: annual-income,relationship
+annual-income: 
+Building network #16
+SCORE = -139427.777479
+age: education-num
+education-num: 
+sex: occupation,marital-status,native-country,education
+native-country: capital-gain,hours-per-week,age
+education: relationship,age,education-num
+relationship: 
+marital-status: annual-income,hours-per-week,relationship,workclass,capital-loss
+race: sex,occupation,marital-status,annual-income,native-country,capital-loss
+workclass: age,education-num
+hours-per-week: education
+occupation: marital-status,annual-income,native-country,capital-gain,hours-per-week,education,relationship,workclass,capital-loss
+capital-gain: workclass
+capital-loss: 
+annual-income: capital-gain
+Building network #17
+SCORE = -163360.03836
+age: 
+education-num: race
+sex: relationship,marital-status
+native-country: race
+education: education-num,capital-gain,sex,annual-income,age
+relationship: age,marital-status
+marital-status: 
+race: 
+workclass: education,education-num,capital-gain,native-country,relationship,age,marital-status
+hours-per-week: occupation,workclass,education,education-num,native-country
+occupation: workclass,education,sex,native-country,race,relationship
+capital-gain: annual-income
+capital-loss: hours-per-week,occupation,workclass,capital-gain,sex,annual-income
+annual-income: 
+Building network #18
+SCORE = -119294.347748
+age: 
+education-num: 
+sex: capital-loss,marital-status,relationship,hours-per-week
+native-country: 
+education: occupation,education-num,annual-income,hours-per-week,age,race,native-country
+relationship: occupation,annual-income,age
+marital-status: relationship,education,occupation
+race: native-country
+workclass: sex,capital-loss,marital-status,education,age,race,native-country
+hours-per-week: 
+occupation: education-num,hours-per-week,race
+capital-gain: workclass,sex,capital-loss,marital-status,education,education-num,annual-income
+capital-loss: relationship
+annual-income: 
+Building network #19
+SCORE = -126324.878013
+age: capital-loss,education,occupation,race,native-country
+education-num: 
+sex: 
+native-country: 
+education: occupation,race,capital-gain,marital-status,hours-per-week,annual-income,workclass,education-num
+relationship: 
+marital-status: native-country,hours-per-week,sex,annual-income,relationship
+race: capital-gain,marital-status,sex,education-num
+workclass: 
+hours-per-week: 
+occupation: race,capital-gain,marital-status,native-country,sex,workclass,education-num,relationship
+capital-gain: hours-per-week,annual-income,relationship
+capital-loss: education,occupation
+annual-income: workclass
+Building network #20
+SCORE = -177309.683182
+age: 
+education-num: 
+sex: annual-income,workclass,race,native-country,education,age
+native-country: education
+education: age,hours-per-week
+relationship: marital-status,capital-gain,education-num
+marital-status: age
+race: relationship,marital-status
+workclass: occupation,race,relationship,marital-status,capital-gain
+hours-per-week: 
+occupation: race,relationship,native-country,capital-gain,education-num,education,hours-per-week
+capital-gain: 
+capital-loss: sex,annual-income,workclass,occupation
+annual-income: workclass,occupation,native-country,education-num,hours-per-week
+Building network #21
+SCORE = -169783.905535
+age: marital-status,annual-income,sex,workclass,relationship
+education-num: 
+sex: native-country
+native-country: 
+education: capital-gain,native-country
+relationship: education-num,capital-gain,native-country
+marital-status: annual-income,sex,workclass,relationship,hours-per-week
+race: 
+workclass: hours-per-week,race,education
+hours-per-week: education
+occupation: age,marital-status,annual-income,sex,workclass,relationship,hours-per-week,race,education-num,education
+capital-gain: 
+capital-loss: occupation,age,marital-status,education-num
+annual-income: race,capital-gain
+Building network #22
+SCORE = -174361.867915
+age: 
+education-num: 
+sex: hours-per-week,education,relationship
+native-country: occupation
+education: occupation,education-num
+relationship: 
+marital-status: workclass,annual-income,race,sex,age,native-country,education,education-num,relationship
+race: sex,hours-per-week,native-country,education-num
+workclass: annual-income,race,sex,age,capital-gain,native-country,relationship
+hours-per-week: age
+occupation: 
+capital-gain: 
+capital-loss: marital-status,workclass,annual-income,race,capital-gain,education
+annual-income: hours-per-week,capital-gain,occupation
+Building network #23
+SCORE = -148973.746758
+age: 
+education-num: 
+sex: age,occupation
+native-country: sex,age,education
+education: education-num,annual-income,race
+relationship: capital-gain,native-country,sex,capital-loss,occupation,education,workclass
+marital-status: relationship,capital-gain,native-country,capital-loss,age,occupation,education-num,annual-income,race
+race: 
+workclass: 
+hours-per-week: marital-status,relationship,capital-gain,native-country,sex,capital-loss,workclass
+occupation: education,education-num,workclass
+capital-gain: 
+capital-loss: annual-income
+annual-income: race
+Building network #24
+SCORE = -139143.313391
+age: 
+education-num: capital-loss,occupation
+sex: marital-status,native-country
+native-country: 
+education: capital-gain,education-num,capital-loss,race,age,annual-income,workclass,occupation,sex,marital-status
+relationship: native-country
+marital-status: relationship
+race: age,workclass,occupation,sex,hours-per-week,relationship
+workclass: sex,hours-per-week,relationship,native-country
+hours-per-week: 
+occupation: 
+capital-gain: education-num,capital-loss,race,annual-income
+capital-loss: race,age,annual-income,marital-status
+annual-income: workclass,hours-per-week
+Building network #25
+SCORE = -170863.819901
+age: education
+education-num: 
+sex: native-country,age
+native-country: race
+education: race,education-num
+relationship: occupation,annual-income,hours-per-week,sex,workclass,native-country,education,race,capital-loss
+marital-status: 
+race: 
+workclass: age,marital-status,education-num,capital-loss
+hours-per-week: sex,workclass,marital-status
+occupation: annual-income,sex,workclass,native-country,age,marital-status,education,capital-loss
+capital-gain: relationship,occupation,annual-income,hours-per-week,education-num
+capital-loss: 
+annual-income: hours-per-week
+Building network #26
+SCORE = -140196.648473
+age: capital-gain,education
+education-num: capital-loss,education
+sex: marital-status,annual-income
+native-country: 
+education: 
+relationship: race,sex,marital-status,age,occupation,native-country,workclass
+marital-status: age,occupation,annual-income,education-num,native-country,capital-loss,hours-per-week
+race: sex,marital-status,age,occupation,education-num,capital-gain,hours-per-week
+workclass: 
+hours-per-week: education
+occupation: annual-income,education-num,native-country,capital-gain,capital-loss,hours-per-week,workclass
+capital-gain: workclass
+capital-loss: 
+annual-income: 
+Building network #27
+SCORE = -112494.263245
+age: 
+education-num: annual-income,capital-loss,hours-per-week,education,sex
+sex: 
+native-country: race,capital-gain
+education: relationship,race,workclass,capital-gain
+relationship: sex,race
+marital-status: occupation,education-num,annual-income,native-country,capital-loss,hours-per-week,age,relationship
+race: 
+workclass: 
+hours-per-week: workclass
+occupation: education-num,annual-income,native-country,capital-loss,hours-per-week,age,education,relationship,sex,workclass,capital-gain
+capital-gain: 
+capital-loss: age,education
+annual-income: native-country
+Building network #28
+SCORE = -175756.197514
+age: education-num,occupation,capital-loss
+education-num: occupation,capital-loss,annual-income,hours-per-week,education
+sex: hours-per-week,relationship,marital-status
+native-country: age,education-num,occupation,sex,education,capital-gain,relationship,workclass,marital-status,race
+education: workclass,race
+relationship: workclass,marital-status
+marital-status: 
+race: 
+workclass: 
+hours-per-week: capital-gain,relationship
+occupation: capital-loss,annual-income,sex,education,capital-gain,race
+capital-gain: 
+capital-loss: annual-income
+annual-income: sex,hours-per-week
+Building network #29
+SCORE = -147733.305556
+age: 
+education-num: 
+sex: marital-status,relationship,annual-income,race,age,education-num
+native-country: 
+education: native-country,occupation
+relationship: annual-income,race,workclass,hours-per-week,education,native-country,capital-loss,education-num
+marital-status: relationship,annual-income,race,workclass,age,education,capital-loss
+race: workclass,capital-gain,education,capital-loss,occupation
+workclass: hours-per-week,age,capital-gain,occupation
+hours-per-week: 
+occupation: education-num
+capital-gain: native-country
+capital-loss: 
+annual-income: hours-per-week,capital-gain
+Building network #30
+SCORE = -152173.569944
+age: relationship,occupation,marital-status,workclass,capital-loss
+education-num: 
+sex: education,age,relationship,occupation,capital-gain,hours-per-week
+native-country: annual-income,race
+education: age,relationship,occupation,capital-gain,workclass,annual-income,capital-loss,race,education-num
+relationship: marital-status,native-country,race,hours-per-week
+marital-status: workclass
+race: 
+workclass: native-country
+hours-per-week: 
+occupation: capital-gain,marital-status,native-country,annual-income,capital-loss,education-num
+capital-gain: 
+capital-loss: education-num
+annual-income: hours-per-week
+Building network #31
+SCORE = -126758.764939
+age: 
+education-num: capital-gain
+sex: occupation
+native-country: 
+education: age,workclass
+relationship: education-num,hours-per-week,sex,annual-income,occupation,capital-loss,capital-gain,education
+marital-status: race,relationship,education-num,hours-per-week,sex,annual-income,occupation,native-country,education,workclass
+race: relationship,education-num,hours-per-week,sex,annual-income,capital-loss,native-country
+workclass: 
+hours-per-week: native-country,age
+occupation: capital-loss,capital-gain,education,age
+capital-gain: 
+capital-loss: workclass
+annual-income: 
+Building network #32
+SCORE = -155053.444195
+age: relationship,marital-status
+education-num: annual-income,age,education,workclass
+sex: 
+native-country: education-num,annual-income,age,relationship,education,race
+education: sex,race,workclass,occupation,capital-loss
+relationship: education,sex,workclass,marital-status,capital-loss,capital-gain
+marital-status: capital-gain
+race: occupation,capital-gain
+workclass: occupation
+hours-per-week: 
+occupation: capital-loss,hours-per-week
+capital-gain: 
+capital-loss: hours-per-week
+annual-income: age,relationship,sex,race,marital-status,hours-per-week
+Building network #33
+SCORE = -176414.161048
+age: workclass,hours-per-week,sex,relationship
+education-num: capital-loss
+sex: relationship,education-num,native-country
+native-country: 
+education: relationship,education-num,annual-income,capital-loss,occupation,race,marital-status
+relationship: education-num,occupation
+marital-status: 
+race: marital-status
+workclass: hours-per-week,sex,education,native-country
+hours-per-week: sex,education,annual-income,capital-loss,occupation,race
+occupation: race,native-country
+capital-gain: age,workclass,hours-per-week,education,annual-income
+capital-loss: marital-status
+annual-income: 
+Building network #34
+SCORE = -117831.526612
+age: race,hours-per-week,education-num
+education-num: 
+sex: 
+native-country: 
+education: annual-income,capital-loss,education-num
+relationship: annual-income,sex
+marital-status: relationship,hours-per-week,education,annual-income,sex
+race: marital-status,education,capital-loss,native-country
+workclass: occupation,capital-gain,age,race,marital-status,relationship,capital-loss
+hours-per-week: native-country
+occupation: capital-gain,age,race,marital-status,relationship,hours-per-week,education,native-country
+capital-gain: age,sex
+capital-loss: 
+annual-income: education-num
+Building network #35
+SCORE = -176724.149254
+age: education-num,race,relationship
+education-num: capital-gain,workclass,occupation,education
+sex: education
+native-country: 
+education: 
+relationship: education
+marital-status: capital-loss,hours-per-week,age,education-num,sex,race,capital-gain,workclass,annual-income,native-country
+race: occupation
+workclass: relationship
+hours-per-week: age,sex,capital-gain,workclass,annual-income
+occupation: relationship,native-country
+capital-gain: annual-income
+capital-loss: hours-per-week,age,education-num,sex,race
+annual-income: occupation,native-country
+Building network #36
+SCORE = -133719.17535
+age: 
+education-num: workclass,annual-income,hours-per-week,education,age,relationship,capital-loss
+sex: 
+native-country: capital-gain
+education: occupation,race,marital-status,native-country,capital-gain,capital-loss
+relationship: capital-loss
+marital-status: native-country,sex,relationship
+race: age
+workclass: annual-income,hours-per-week,education,occupation,race
+hours-per-week: 
+occupation: race,marital-status,native-country,age,capital-gain,sex
+capital-gain: sex,relationship
+capital-loss: 
+annual-income: hours-per-week,education,occupation,marital-status
+Building network #37
+SCORE = -175589.256049
+age: race
+education-num: sex,annual-income,education
+sex: native-country,relationship,hours-per-week
+native-country: 
+education: 
+relationship: age,race,hours-per-week,marital-status
+marital-status: 
+race: annual-income,education
+workclass: sex,relationship,marital-status
+hours-per-week: 
+occupation: education-num,workclass,sex,native-country,relationship,age,race,hours-per-week
+capital-gain: capital-loss,occupation,education-num,workclass,age,annual-income
+capital-loss: occupation,education-num,workclass,native-country,marital-status
+annual-income: education
+Building network #38
+SCORE = -182041.161638
+age: education,native-country
+education-num: 
+sex: marital-status
+native-country: occupation
+education: education-num
+relationship: annual-income,sex,age,education,capital-gain,marital-status
+marital-status: 
+race: hours-per-week,capital-loss,workclass,relationship,sex,native-country
+workclass: relationship,annual-income,sex,age,capital-gain,native-country,occupation,marital-status,education-num
+hours-per-week: capital-loss,workclass,relationship,annual-income,age,education-num
+occupation: 
+capital-gain: 
+capital-loss: workclass,education
+annual-income: capital-gain,occupation
+Building network #39
+SCORE = -129352.850181
+age: hours-per-week,capital-gain,marital-status
+education-num: education
+sex: age,hours-per-week,relationship,race,workclass
+native-country: 
+education: annual-income
+relationship: marital-status,native-country,education-num
+marital-status: education,annual-income,workclass
+race: capital-gain,education,annual-income
+workclass: 
+hours-per-week: relationship,race,native-country,education-num
+occupation: capital-loss,sex,age,hours-per-week,relationship,race,capital-gain,marital-status,native-country,education-num,workclass
+capital-gain: 
+capital-loss: sex,age
+annual-income: 
+Building network #40
+SCORE = -185364.601362
+age: 
+education-num: relationship,capital-loss,hours-per-week,workclass,sex,occupation,marital-status,education
+sex: education
+native-country: 
+education: 
+relationship: capital-loss,hours-per-week,workclass,annual-income,occupation,marital-status,native-country,age
+marital-status: age,education
+race: capital-gain,education-num,relationship,capital-loss,hours-per-week,workclass,sex,age
+workclass: annual-income
+hours-per-week: sex,annual-income
+occupation: native-country
+capital-gain: education-num,relationship
+capital-loss: occupation,native-country
+annual-income: marital-status
+Building network #41
+SCORE = -113540.8147
+age: capital-gain
+education-num: 
+sex: workclass,native-country,relationship
+native-country: marital-status
+education: capital-gain
+relationship: marital-status,annual-income,race,age,education-num,education,hours-per-week
+marital-status: race,age
+race: education
+workclass: native-country,relationship,marital-status,age,hours-per-week
+hours-per-week: 
+occupation: capital-loss,sex,workclass,native-country,relationship,annual-income,race,education-num,education,capital-gain
+capital-gain: 
+capital-loss: sex,workclass,annual-income
+annual-income: education-num,hours-per-week
+Building network #42
+SCORE = -177718.584557
+age: 
+education-num: education,marital-status,race
+sex: annual-income,workclass,hours-per-week,relationship
+native-country: education-num
+education: marital-status,capital-loss,relationship
+relationship: 
+marital-status: occupation,capital-loss,age
+race: 
+workclass: hours-per-week,native-country,education-num,marital-status,occupation,race,age
+hours-per-week: native-country,education-num
+occupation: race,age,relationship
+capital-gain: sex,annual-income,workclass,education
+capital-loss: 
+annual-income: workclass,hours-per-week,native-country,education,occupation,capital-loss
+Building network #43
+SCORE = -166254.943763
+age: sex,marital-status,hours-per-week
+education-num: native-country,workclass,age,sex,occupation,capital-loss
+sex: race,marital-status,education,capital-gain,relationship
+native-country: workclass,age,race,marital-status
+education: occupation,capital-gain,capital-loss,annual-income
+relationship: 
+marital-status: education,hours-per-week,relationship,capital-loss,annual-income
+race: occupation
+workclass: age,sex,race,education,hours-per-week,capital-gain
+hours-per-week: 
+occupation: relationship,annual-income
+capital-gain: 
+capital-loss: 
+annual-income: 
+Building network #44
+SCORE = -138224.204457
+age: 
+education-num: education,annual-income,occupation,age
+sex: 
+native-country: 
+education: annual-income,occupation,capital-loss,relationship,race,capital-gain,native-country
+relationship: marital-status,capital-gain,age
+marital-status: native-country,sex,age
+race: marital-status,native-country
+workclass: hours-per-week,relationship,race,capital-gain
+hours-per-week: 
+occupation: capital-loss,workclass,hours-per-week,relationship
+capital-gain: sex
+capital-loss: workclass,race,marital-status
+annual-income: occupation,capital-loss,workclass,hours-per-week,sex
+Building network #45
+SCORE = -167584.625749
+age: 
+education-num: marital-status,education
+sex: relationship,native-country,capital-loss,race,hours-per-week,workclass
+native-country: capital-loss,occupation,race,annual-income,education
+education: workclass
+relationship: native-country,capital-loss,occupation,capital-gain,education-num,annual-income,marital-status,age,education
+marital-status: age,workclass
+race: capital-gain,marital-status
+workclass: 
+hours-per-week: 
+occupation: race,capital-gain,education-num,annual-income
+capital-gain: education-num,age
+capital-loss: occupation,hours-per-week
+annual-income: hours-per-week
+Building network #46
+SCORE = -134917.206729
+age: capital-loss,occupation,capital-gain
+education-num: 
+sex: annual-income,age,hours-per-week,education
+native-country: education-num
+education: capital-loss,occupation,native-country,workclass,education-num,capital-gain
+relationship: sex,annual-income,age,hours-per-week,education,capital-loss,marital-status,workclass,race
+marital-status: native-country
+race: 
+workclass: race,capital-gain
+hours-per-week: education,marital-status,education-num
+occupation: marital-status,native-country,race
+capital-gain: 
+capital-loss: occupation,workclass
+annual-income: age,hours-per-week
+Building network #47
+SCORE = -149862.723407
+age: 
+education-num: 
+sex: 
+native-country: 
+education: ed

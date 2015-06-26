@@ -1,0 +1,2 @@
+Building network for ../data/training.csv
+Building network #1

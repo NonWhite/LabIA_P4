@@ -1,0 +1,60 @@
+Pre-processing ../data/gentraining_model1.txt
+TOTAL ROWS =   19500
+REMOVED ROWS =     0
+FILTER ROWS =  19500
+Pre-processing ../data/test.csv
+TOTAL ROWS =   16281
+REMOVED ROWS =  1221
+FILTER ROWS =  15060
+Adding test rows from ['../data/test.csv']
+TEST ROWS = 15060
+Building network for ../data/gentraining_model1.txt
+Building network #1
+	SCORE = -256.832413358
+	age: 
+	education-num: 
+	sex: 
+	native-country: 
+	education: 
+	relationship: 
+	marital-status: 
+	race: 
+	workclass: 
+	hours-per-week: 
+	occupation: 
+	capital-gain: 
+	capital-loss: 
+	annual-income: 
+Building network #2
+	SCORE = -256.832413358
+	age: 
+	education-num: 
+	sex: 
+	native-country: 
+	education: 
+	relationship: 
+	marital-status: 
+	race: 
+	workclass: 
+	hours-per-week: 
+	occupation: 
+	capital-gain: 
+	capital-loss: 
+	annual-income: 
+Building network #3
+	SCORE = -256.832413358
+	age: 
+	education-num: 
+	sex: 
+	native-country: 
+	education: 
+	relationship: 
+	marital-status: 
+	race: 
+	workclass: 
+	hours-per-week: 
+	occupation: 
+	capital-gain: 
+	capital-loss: 
+	annual-income: 
+Building network #4
