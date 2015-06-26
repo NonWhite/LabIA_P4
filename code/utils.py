@@ -2,6 +2,7 @@ from random import randint
 
 ''' ======== FILES PARAMETERS ======== '''
 DATA_DIR = '../data/'
+RESULTS_DIR = '../results/'
 TRAINING_FILE = DATA_DIR + 'training.csv'
 TEST_FILE = DATA_DIR + 'test.csv'
 MODELS = [ DATA_DIR + x for x in [ 'model1.txt' , 'model2.txt' , 'model3.txt' ] ]
@@ -12,7 +13,7 @@ FIELD_DELIMITER = ','
 NUMERIC_FIELD = 'numeric'
 LITERAL_FIELD = 'literal'
 
-INT_MAX = 200000000000
+INT_MAX = int( 2e30 )
 
 ESS = 1.0
 
@@ -28,8 +29,8 @@ SIZE_TO_GET_RAND_VALUE = 100
 
 ''' ======== LEARNING PARAMETERS ======== '''
 MAX_NUM_PARENTS = 3
-NUM_ORDERING_SAMPLES = 10
-NUM_GREEDY_RESTARTS = 10
+NUM_ORDERING_SAMPLES = 100
+NUM_GREEDY_RESTARTS = 5
 
 def shuffle( arr ) :
 	new_arr = list( arr )
