@@ -93,9 +93,17 @@ class Evaluator( Extractor ) :
 	def hashed( self , cond ) :
 		resp = ''
 		if not cond : return resp
-		for field in self.topological :
+		for field in self.fields :
 			if field not in cond : continue
 			resp += "%s:%s, " % ( field , cond[ field ] )
+		return resp[ :-2 ]
+	
+	def hashedarray( self , setfields ) :
+		resp = ''
+		if not setfields : return resp
+		for field in self.fields :
+			if field not in setfields : continue
+			resp += "%s, " % field
 		return resp[ :-2 ]
 	
 	def query( self , filters ) :
