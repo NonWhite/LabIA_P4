@@ -24,6 +24,7 @@ class Learner( Evaluator ) :
 			network = dict( [ ( field , copy( node ) ) for field in self.fields ] )
 			network[ 'score' ] = 0.0
 			self.out.write( "Building network #%s\n" % ( k + 1 ) )
+			print "Building network #%s" % ( k + 1 )
 			for i in range( len( lst_fields ) ) :
 				field = lst_fields[ i ]
 				print "======== Field #%s: %s ========" % ( i , field )
@@ -105,6 +106,7 @@ class Learner( Evaluator ) :
 		self.out.write( "SCORE = %s\n" % network[ 'score' ] )
 		for field in self.fields :
 			self.out.write( "%s: %s\n" % ( field , ','.join( network[ field ][ 'childs' ] ) ) )
+		self.out.write( '\n' )
 
 if __name__ == "__main__" :
 	if len( sys.argv ) > 1 :
