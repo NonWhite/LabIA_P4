@@ -27,7 +27,7 @@ class Evaluator( Extractor ) :
 			for l in lines :
 				sp = l[ :-1 ].split( ':' )
 				field = sp[ 0 ]
-				childs = [ s for s in sp[ 1 ].split( ',' ) if len( s ) > 0 ]
+				childs = [ s.strip() for s in sp[ 1 ].split( ',' ) if len( s.strip() ) > 0 ]
 				for ch in childs :
 					self.network[ field ][ 'childs' ].append( ch )
 					self.network[ ch ][ 'parents' ].append( field )
