@@ -3,16 +3,45 @@ from copy import deepcopy as copy
 from evaluator import Evaluator
 from random import randint
 from math import log
+import os.path
 import sys
 
 class Learner( Evaluator ) :
 	def buildNetwork( self , outfilepath = 'out.txt' ) :
 		self.out = open( outfilepath , 'w' )
+		self.preprocesscounters()
 		network = self.randomSampling()
 		self.out.write( "BEST NETWORK:\n" )
 		self.printnetwork( network )
+		self.saveBestNetwork( network )
 	
-	# TODO: Test this
+	# TODO
+	def preprocesscounters( self ) :
+		self.counters = {}
+		for idx in range( len( self.rows ) ) :
+			row = self.rows[ idx ]
+			subconj = getsubconj( row )
+			for sub in subconj :
+				H = self.hashed( sub )
+				if H not in self.counters : self.counters[ H ] = 0.0
+				self.counters[ H ] += 1.0
+			if idx % 1000 == 0 : print idx
+		return 'gg'
+	
+	def getcount( self , fields ) :
+		F = self.hashed( fields )
+		if F not in self.counters : self.counters[ F ] = 0.0
+		return self.counters[ F ]
+
+	def saveBestNetwork( self , network ) :
+		best_file = os.path.basename( self.sources[ 0 ] )
+		dirname = os.path.dirname( self.sources[ 0 ] )
+		best_file = dirname + '/best_' + best_file.replace( 'gentraining_' , '' )
+		with open( best_file , 'w' ) as f :
+			for field in self.fields :
+				f.write( "%s:%s\n" % ( field , ', '.join( network[ field ][ 'childs' ] ) ) )
+		self.modelfile = best_file
+	
 	def randomSampling( self ) :
 		self.out.write( 'Building network for %s\n' % ','.join( self.sources ) )
 		node = { 'parents': [] , 'childs' : [] }
@@ -29,7 +58,6 @@ class Learner( Evaluator ) :
 				field = lst_fields[ i ]
 				print "======== Field #%s: %s ========" % ( i , field )
 				best_parents = []
-				#best_score = self.bic_score( field , best_parents ) # Without parents
 				best_score = ( -INT_MAX if i > 0 else self.bic_score( field , best_parents ) )
 				for t in range( NUM_GREEDY_RESTARTS ) :
 					if i == 0 : break # First field doesn't have parents
@@ -47,7 +75,6 @@ class Learner( Evaluator ) :
 							best_score = current
 							best_parents = copy( parents )
 				self.addRelation( network , field , best_parents , best_score )
-			# TODO: Remove this later
 			self.printnetwork( network )
 			best_networks.append( copy( network ) )
 		sorted( best_networks , key = lambda netw : netw[ 'score' ] , reverse = True )
@@ -58,7 +85,6 @@ class Learner( Evaluator ) :
 		for p in parents : network[ p ][ 'childs' ].append( field )
 		network[ 'score' ] += score
 	
-	# TODO: Test this
 	def bic_score( self , xsetfield , ysetfield ) :
 		print "Calculating BIC( %s | %s )" % ( xsetfield , ysetfield )
 		N = len( self.rows )
@@ -70,7 +96,6 @@ class Learner( Evaluator ) :
 		#print "\tBIC( %s | %s ) = %s" % ( xsetfield , ysetfield , resp )
 		return resp
 	
-	# TODO: Test this
 	def entropy( self , xsetfield , ysetfield ) :
 		field = xsetfield
 		cond = self.hashedarray( ysetfield )
@@ -85,13 +110,12 @@ class Learner( Evaluator ) :
 				ij = copy( ydict )
 				ijk = copy( ij )
 				ijk[ xkey ] = xval
-				Nijk = len( self.query( ijk ) ) + EPSILON
-				Nij = len( self.query( ij ) ) + EPSILON
+				Nijk = self.getcount( ijk ) + EPSILON
+				Nij = self.getcount( ij ) + EPSILON
 				resp += ( Nijk / N * log( Nijk / Nij ) )
 		self.entropyvalues[ field ][ cond ] = -resp
 		return -resp
 
-	# TODO: Test this
 	def size( self , xsetfield , ysetfield ) :
 		field = xsetfield
 		cond = self.hashedarray( ysetfield )
@@ -111,16 +135,20 @@ class Learner( Evaluator ) :
 if __name__ == "__main__" :
 	if len( sys.argv ) > 1 :
 		( training_data , test_data ) = sys.argv[ 1: ]
-	test_data = TEST_FILE
 	''' SYNTHETIC DATA '''
 	for i in range( 1 , 4 ) :
 		training_data = DATA_DIR + ( 'gentraining_model%s.txt' ) % i
+		test_data = DATA_DIR + ( 'gentest_model%s.txt' ) % i
 		learner = Learner( [ training_data ] )
-		#learner.addTrainingSet( [ test_data ] )
 		output_data = RESULTS_DIR + ( 'gentraining_model%s.txt' ) % i
 		learner.buildNetwork( outfilepath = output_data )
+		learner.addTrainingSet( [ test_data ] )
+		loglikelihood = learner.loadAndTestModel( learner.modelfile )
+		learner.out.write( "DATA LOG-LIKELIHOOD = %s" % loglikelihood )
 	''' REAL DATA '''
 	output_data = RESULTS_DIR + 'realdata.txt'
 	learner = Learner( [ TRAINING_FILE ] , savefilter = True , ommit = [ 'fnlgwt' ] , discretize = True )
-	#learner.addTrainingSet( [ test_data ] )
+	learner.addTrainingSet( [ TEST_FILE ] )
 	learner.buildNetwork( outfilepath = output_data )
+	loglikelihood = learner.loadAndTestModel( learner.modelfile )
+	learner.out.write( "DATA LOG-LIKELIHOOD = %s" % loglikelihood )
