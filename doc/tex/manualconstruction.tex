@@ -1,28 +1,7 @@
 \section{Construção manual de redes bayesianas}
 
 \subsection{Primeira rede}
-	A continuação se mostram as relações de dependencia para construir o grafo da rede bayesiana:
-	% MEJORAR ESTO
-	\begin{comment}
-	\begin{itemize}
-		\item age: marital-status
-		\item marital-status: workclass
-		\item workclass: hours-per-week,capital-gain,capital-loss
-		\item hours-per-week: annual-income
-		\item native-country: race,occupation
-		\item race: workclass
-		\item sex: relationship,hours-per-week
-		\item relationship: marital-status
-		\item occupation: capital-gain,capital-loss
-		\item education-num: education
-		\item education: occupation
-		\item capital-gain: annual-income
-		\item capital-loss: annual-income
-		\item annual-income:
-	\end{itemize}
-	\end{comment}
-	Cada linha é da forma $X_i : Childs( X_i )$ que representa todas as relações de causalidade que tem cada característica com algumas outras.\\
-	De forma mais ilustrada, a Figura~\ref{fig:rede1} mostra a rede bayesiana construida com as linhas anteriores.
+	A Figura~\ref{fig:rede1} mostra a rede bayesiana construida manualmente.
 	\begin{figure}[H]
 		\centering
 		\input{networks/manual1}
@@ -41,27 +20,7 @@
 	\end{itemize}
 	
 \subsection{Segunda rede}
-	Da mesma forma que para a anterior rede temos:
-	% MEJORAR ESTO
-	\begin{comment}
-	\begin{itemize}
-		\item age: marital-status
-		\item marital-status: workclass
-		\item workclass: relationship,hours-per-week
-		\item hours-per-week: capital-gain,capital-loss
-		\item native-country: occupation,education,education-num,race
-		\item race: education
-		\item sex: workclass
-		\item relationship: capital-gain,capital-loss
-		\item occupation: capital-gain,capital-loss
-		\item education-num: education
-		\item education: marital-status
-		\item capital-gain: annual-income
-		\item capital-loss: annual-income
-		\item annual-income:
-	\end{itemize}
-	\end{comment}
-	A Figura~\ref{fig:rede2} mostra todas as relações de dependencia que tem cada característica.
+	Na seguinte figura se mostram todas as relações de dependencia que tem cada característica.
 	\begin{figure}[H]
 		\centering
 		\input{networks/manual2}
@@ -82,28 +41,7 @@
 	\end{itemize}
 
 \subsection{Terceira rede}
-	Por último, a terceira rede construída manualmente é:
-	% MEJORAR ESTO
-	\begin{comment}
-	\begin{itemize}
-		\item age: capital-gain,capital-loss
-		\item marital-status: workclass
-		\item workclass: hours-per-week
-		\item hours-per-week: annual-income
-		\item native-country: race,capital-gain,capital-loss
-		\item race: relationship
-		\item sex: capital-gain,capital-loss
-		\item relationship: marital-status
-		\item occupation: workclass
-		\item education-num: workclass
-		\item education: workclass
-		\item capital-gain: education,education-num
-		\item capital-loss: education,education-num
-		\item annual-income:
-	\end{itemize}
-	\end{comment}
-	
-	Na Figura~\ref{fig:rede3} a continuação mostra a última rede bayesiana construída manualmente.
+	Por último, a Figura~\ref{fig:rede3} mostra a última rede bayesiana construída manualmente.
 	\begin{figure}[H]
 		\centering
 		\input{networks/manual3}
