@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+	\tikzset{ vertex/.style = { shape = circle , draw , minimum size = 2.5em } }
+	\tikzset{ edge/.style = { ->,> = latex' } }
+	% vertices
+	\node[ vertex ] (AG) at  ( 0 , 0 ) { ${AG}$ } ;
+	\node[ vertex ] (S) at  ( 4.5 , 0 ) { ${S}$ } ;
+	\node[ vertex ] (N) at  ( 9 , 0 ) { ${N}$ } ;
+	
+	\node[ vertex ] (W) at ( 0 , -2 ) { ${W}$ } ;
+	\node[ vertex ] (M) at ( 2.25 , -2 ) { ${M}$ } ;
+	\node[ vertex ] (ED) at ( 4.5 , -2 ) { ${ED}$ } ;
+	\node[ vertex ] (EN) at  ( 6.75 , -2 ) { ${EN}$ } ;
+	\node[ vertex ] (RA) at ( 9 , -2 ) { ${RA}$ } ;
+	
+	\node[ vertex ] (RE) at ( 1.5 , -4 ) { ${RE}$ } ;
+	\node[ vertex ] (H) at ( 4.5 , -4 ) { ${H}$ } ;
+	\node[ vertex ] (O) at ( 7.5 , -4 ) { ${O}$ } ;
+	
+	\node[ vertex ] (CG) at ( 3 , -6 ) { ${CG}$ } ;
+	\node[ vertex ] (CL) at ( 6 , -6 ) { ${CL}$ } ;
+	
+	\node[ vertex ] (AI) at ( 4.5 , -8 ) { ${AI}$ } ;
+	
+	%edges
+	\draw[ edge ] (AG) to (M) ;
+	\draw[ edge ] (S) to (W) ;
+	\draw[ edge ] (N) to (RA) ;
+	\draw[ edge ] (N) to (ED) ;
+	\draw[ edge ] (N) to (EN) ;
+	\draw[ edge ] (N) to (O) ;
+	
+	\draw[ edge ] (W) to (H) ;
+	\draw[ edge ] (W) to (RE) ;
+	\draw[ edge ] (M) to (W) ;
+	\draw[ edge ] (ED) to (M) ;
+	\draw[ edge ] (EN) to (ED) ;
+	\draw[ edge ] (RA) to[in=-45,out=-135] (ED) ;
+	
+	\draw[ edge ] (RE) to (CG) ;
+	\draw[ edge ] (RE) to (CL) ;
+	\draw[ edge ] (H) to (CG) ;
+	\draw[ edge ] (H) to (CL) ;
+	\draw[ edge ] (O) to (CG) ;
+	\draw[ edge ] (O) to (CL) ;
+	
+	\draw[ edge ] (CG) to (AI) ;
+	\draw[ edge ] (CL) to (AI) ;
+\end{tikzpicture}

@@ -2,6 +2,8 @@
 
 \subsection{Primeira rede}
 	A continuação se mostram as relações de dependencia para construir o grafo da rede bayesiana:
+	% MEJORAR ESTO
+	\begin{comment}
 	\begin{itemize}
 		\item age: marital-status
 		\item marital-status: workclass
@@ -18,15 +20,15 @@
 		\item capital-loss: annual-income
 		\item annual-income:
 	\end{itemize}
+	\end{comment}
 	Cada linha é da forma $X_i : Childs( X_i )$ que representa todas as relações de causalidade que tem cada característica com algumas outras.\\
 	De forma mais ilustrada, a Figura~\ref{fig:rede1} mostra a rede bayesiana construida com as linhas anteriores.
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[height=12cm]{images/rede1}
+		\input{networks/manual1}
 		\caption{Primeira rede bayesiana}
 		\label{fig:rede1}
 	\end{figure}
-	\\
 	Para construir esta rede se levou em consideração as seguintes suposições:
 	\begin{itemize}
 		\item Sexo, idade e pais de origem não tem como causa alguma das outras características porque na vida real não dependem de nada
@@ -40,6 +42,8 @@
 	
 \subsection{Segunda rede}
 	Da mesma forma que para a anterior rede temos:
+	% MEJORAR ESTO
+	\begin{comment}
 	\begin{itemize}
 		\item age: marital-status
 		\item marital-status: workclass
@@ -56,14 +60,14 @@
 		\item capital-loss: annual-income
 		\item annual-income:
 	\end{itemize}
+	\end{comment}
 	A Figura~\ref{fig:rede2} mostra todas as relações de dependencia que tem cada característica.
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[height=12cm]{images/rede2}
+		\input{networks/manual2}
 		\caption{Segunda rede bayesiana}
 		\label{fig:rede2}
 	\end{figure}
-	\\
 	Tendo en consideração as seguintes suposições podemos construir esta rede:
 	\begin{itemize}
 		\item A educação, raza e a ocupação dependem do pais de origem da pessoa por as oportunidades que podem existir li
@@ -79,6 +83,8 @@
 
 \subsection{Terceira rede}
 	Por último, a terceira rede construída manualmente é:
+	% MEJORAR ESTO
+	\begin{comment}
 	\begin{itemize}
 		\item age: capital-gain,capital-loss
 		\item marital-status: workclass
@@ -95,15 +101,15 @@
 		\item capital-loss: education,education-num
 		\item annual-income:
 	\end{itemize}
+	\end{comment}
 	
 	Na Figura~\ref{fig:rede3} a continuação mostra a última rede bayesiana construída manualmente.
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[height=12cm]{images/rede3}
+		\input{networks/manual3}
 		\caption{Terceira rede bayesiana}
 		\label{fig:rede3}
 	\end{figure}
-	\\
 	Para esta última rede se levou em consideração o seguinte:
 	\begin{itemize}
 		\item A idade, o sexo e o pais de origem influem nos ganhos e perdas de capital porque uma pessoa mais joven não tem muitas perdas, uma mulher pode ter muitas perdas por muitas compras e o pais de origem pode ter uma crise que gere muitas perdas as pessoas.
