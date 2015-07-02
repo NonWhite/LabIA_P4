@@ -1,29 +1,87 @@
 \section{Experimentos e resultados}
 
-Para cada uma das redes se calculou todas suas probabilidades usando a propriedade seguinte:
-	\[ P( X_i , \ldots , X_n ) = \prod_{i=1}^{n} P( X_i \mid {Pa}( X_i ) ) \]
-Onde ${Pa}( X_i )$ são todas características que são pais de $X_i$ na rede bayesiana. Além disso, a probabilidade condicional pode ser calculada da seguinte forma:
-	\[ P( A \mid B ) = \frac{ P( A \cap B ) }{ P( B ) }\]
-Mas para calcular todas as probabilidades, se tem que evaluar cada variável $X_i$ com os valores que aparecem os dados de entrada sendo a fórmula da seguinte forma:
-	\[ P( A = a \mid B = b ) = \frac{ N( A = a \cap B = b ) + \alpha_{ab} }{N( B = b ) + \alpha_b } \]
-Para este trabalho os valores de $\alpha$ foram uma estimação com base nos dados calculada com a formula:
-	\[ \alpha_{a} = \frac{ 1 }{ |\Omega_a|} \]
-Na formula anterior, se $a$ fosse um conjunto de variáveis, o fator debaixo da fração muda para uma produtora de $\Omega_i$.
-Tendo em consideração todas as fórmulas anteriores se calcularam todas as probabilidades de cada uma das redes.
-\\
-Por último, com a rede já treinada pelos dados de treinamento, se tinha que testar a robustez de cada uma e fazer uma comparação entre elas usando os dados de test.
-\\
-Para comparar as redes foi calculado o parâmetro Data Log-Likelihood com os dados de test para cada uma. Os resultados de cada test estão na Tabela~\ref{tab:loglike}.
+\subsection{Considerações generais}
+	\subsubsection{Formulas}
+		Para cada uma das redes se calculou todas suas probabilidades usando a propriedade seguinte:
+			\[ P( X_i , \ldots , X_n ) = \prod_{i=1}^{n} P( X_i \mid {Pa}( X_i ) ) \]
+		Onde ${Pa}( X_i )$ são todas características que são pais de $X_i$ na rede bayesiana. Além disso, a probabilidade condicional pode ser calculada da seguinte forma:
+			\[ P( A \mid B ) = \frac{ P( A \cap B ) }{ P( B ) }\]
+		Mas para calcular todas as probabilidades, se tem que evaluar cada variável $X_i$ com os valores que aparecem os dados de entrada sendo a fórmula da seguinte forma:
+			\[ P( A = a \mid B = b ) = \frac{ N( A = a \cap B = b ) + \alpha_{ab} }{N( B = b ) + \alpha_b } \]
+		Para este trabalho os valores de $\alpha$ foram uma estimação com base nos dados calculada com a formula:
+			\[ \alpha_{a} = \frac{ 1 }{ |\Omega_a|} \]
+		Na formula anterior, se $a$ fosse um conjunto de variáveis, o fator debaixo da fração muda para uma produtora de $\Omega_i$.
+	
+	\subsubsection{Algoritmo}
+		A seguinte lista mostra os parâmetros usados para a busca da melhor rede bayesiana e os valores que foram considerados para todos os experimentos:
+		\begin{itemize}
+			\item Número de ordens topológicas geradas: 100
+			\item Número máximo de pais: O número que tem a rede feita manualmente e 3 para a busca com os dados reais
+			\item Número de re-starts: 10
+		\end{itemize}
+		Então para construir uma rede foram geradas ordens topológicas e para cada característica se fiz uma busca dos melhores pais que pode ter dada essa ordem topológica (os possíveis pais só foram as características anteriores a ela). O número de vezes que foi feito a busca dos melhores pais é igual ao número de re-starts.
 
+\subsection{Experimento 1: Corretude do algoritmo}
+\label{subsec:exp1}
+	Para poder testar que o algoritmo faz o que diz foi testado com os modelos feitos manualmente e especificados na seção~\ref{sec:construcao}. O objetivo do experimento foi usar o algoritmo para fazer uma busca de redes bayesianas e que a rede usada para gerar os dados seja encontrada entre as melhores. Caso contrario, o algoritmo não está correto.
+	\\
+	Usando as probabilidades calculadas para cada rede feita manualmente foram gerados dados de treinamento e de teste com a mesma proporção especificada em~\ref{subsec:dadosprop} tendo em total 30 mil dados para cada uma.
+	\\
+	Na tabela~\ref{tab:loglike} mostra o parâmetro Data Log-Likelihood com os dados de teste gerados para cada uma e também o valor do parâmetro usando os dados reais.
 	\begin{table}[ h ]
 		\centering
 		\begin{tabular}{ | c | c | c | }
 			\hline
-			Rede 1 & Rede 2 & Rede 3 \\ \hline
-			-163794.41 & -178879.85 & -180462.16 \\ \hline
+			Rede & Real Data & Synthetic Data \\ \hline
+			1 & -163794.41 & -123773.44 \\ \hline
+			2 & -178879.85 & -116475.45 \\ \hline
+			3 & -180462.16 & -132307.87 \\ \hline
 		\end{tabular}
 		\caption{Data Log-Likelihood para cada rede}
 		\label{tab:loglike}
 	\end{table}
+	Os valores são diferentes entre os dois conjuntos de dados porque a quantidade de dados é diferente, mas a proporção entre os valores é similar. A figura~\ref{fig:corretude} mostra as mudanças do valor do parâmetro BIC Score em cada iteração do algoritmo.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=8cm]{images/synt_data}
+		\caption{BIC Score (em milhares) para cada rede}
+		\label{fig:corretude}
+	\end{figure}
+	Por último, o algoritmo encontrou a rede bayesiana usada para gerar os dados em todos os casos, mas nenhuma foi a melhor encontrada, mas sem muito cercana. As figuras~\ref{fig:rede1algo},~\ref{fig:rede2algo} e~\ref{fig:rede3algo} mostram as redes que o algoritmo encontrou para cada conjunto de dados.
+	\begin{figure}[H]
+		\centering
+		\input{networks/best1}
+		\caption{Melhor rede para o modelo 1}
+		\label{fig:rede1algo}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\input{networks/best2}
+		\caption{Melhor rede para o modelo 2}
+		\label{fig:rede2algo}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\input{networks/best3}
+		\caption{Melhor rede para o modelo 3}
+		\label{fig:rede3algo}
+	\end{figure}
+	Portanto, fica demonstrado que o algoritmo faz a busca corretamente dado um conjunto de dados.
 
+\subsection{Experimento 2: Busca com dados reais}
+	Finalmente o algoritmo foi executado com o conjunto de dados originais para fazer a busca da melhor rede. A figura~\ref{fig:busca} mostra o melhor valor do BIC Score para cada uma das iterações do algoritmo.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=8cm]{images/real_data}
+		\caption{BIC Score (em milhares) para os dados reais}
+		\label{fig:busca}
+	\end{figure}
+	Se são comparados os valores com os que tinha na subseção~\ref{subsec:exp1}, estos valores são muito maiores o que quer dizer que possivelmente tem uma maior quantidade de aristas no grafo. Ao final da execução do algoritmo, foi encontrada a rede mostrada na figura~\ref{fig:bestnet}.
+	\begin{figure}[H]
+		\centering
+		\input{networks/bestreal}
+		\caption{Melhor rede encontrada para o conjunto de dados}
+		\label{fig:bestnet}
+	\end{figure}
+	O valor do parâmetro Data Log-Likelihood para esta rede é $DLL = -156842.48$ que é só um pouco maior à rede 1 feita manualmente.
 \clearpage
