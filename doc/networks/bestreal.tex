@@ -2,45 +2,74 @@
 	\tikzset{ vertex/.style = { shape = circle , draw , minimum size = 2.5em } }
 	\tikzset{ edge/.style = { ->,> = latex' } }
 	% vertices
-	\node[ vertex ] (S) at  ( 0 , 0 ) { ${S}$ } ;
-	\node[ vertex ] (AG) at  ( 3 , 0 ) { ${AG}$ } ;
-	\node[ vertex ] (N) at  ( 6 , 0 ) { ${N}$ } ;
-	\node[ vertex ] (EN) at  ( 9 , 0 ) { ${EN}$ } ;
+	\node[ vertex ] (CG) at ( 4.5 , 0 ) { ${CG}$ } ;
+
+	\node[ vertex ] (CL) at ( 0 , -2 ) { ${CL}$ } ;
+	\node[ vertex ] (AI) at ( 3 , -2 ) { ${AI}$ } ;
+	\node[ vertex ] (EN) at  ( 6 , -2 ) { ${EN}$ } ;
+	\node[ vertex ] (W) at ( 9 , -2 ) { ${W}$ } ;
 	
-	\node[ vertex ] (RE) at ( 0 , -2 ) { ${RE}$ } ;
-	\node[ vertex ] (M) at ( 3 , -2 ) { ${M}$ } ;
-	\node[ vertex ] (RA) at ( 6 , -2 ) { ${RA}$ } ;
-	\node[ vertex ] (ED) at ( 9 , -2 ) { ${ED}$ } ;
+	\node[ vertex ] (S) at  ( 3 , -4 ) { ${S}$ } ;
+	\node[ vertex ] (RA) at ( 6 , -4 ) { ${RA}$ } ;
 	
-	\node[ vertex ] (H) at ( 1.5 , -4 ) { ${H}$ } ;
-	\node[ vertex ] (W) at ( 4.5 , -4 ) { ${W}$ } ;
-	\node[ vertex ] (O) at ( 7.5 , -4 ) { ${O}$ } ;
+	\node[ vertex ] (RE) at ( 0 , -6 ) { ${RE}$ } ;
+	\node[ vertex ] (ED) at ( 3 , -6 ) { ${ED}$ } ;
+	\node[ vertex ] (N) at  ( 6 , -6 ) { ${N}$ } ;
+	\node[ vertex ] (H) at ( 9 , -6 ) { ${H}$ } ;
 	
-	\node[ vertex ] (CG) at ( 3 , -6 ) { ${CG}$ } ;
-	\node[ vertex ] (CL) at ( 6 , -6 ) { ${CL}$ } ;
-	
-	\node[ vertex ] (AI) at ( 4.5 , -8 ) { ${AI}$ } ;
+	\node[ vertex ] (M) at ( 6 , -8 ) { ${M}$ } ;
+	\node[ vertex ] (AG) at  ( 9 , -8 ) { ${AG}$ } ;	
+	\node[ vertex ] (O) at ( 3 , -8 ) { ${O}$ } ;
 	
 	%edges
-	\draw[ edge ] (S) to (RE) ;
-	\draw[ edge ] (S) to[in=90,out=0] (H) ;
-	\draw[ edge ] (AG) to (M) ;
-	\draw[ edge ] (N) to (RA) ;
-	\draw[ edge ] (N) to[in=90,out=0] (O) ;
-	\draw[ edge ] (EN) to (ED) ;
-	
+	%age:
+	%workclass:relationship, occupation
+	\draw[ edge ] (W) to[out=-90,in=45] (RE) ;
+	%\draw[ edge ] (W) to (O) ;
+	%education:relationship, marital-status
+	\draw[ edge ] (ED) to (RE) ;
+	\draw[ edge ] (ED) to (M) ;
+	%education-num:race, sex
+	\draw[ edge ] (EN) to (RA) ;
+	\draw[ edge ] (EN) to (S) ;
+	%marital-status:occupation
+	\draw[ edge ] (M) to (O) ;
+	%occupation:
+	%relationship:marital-status
 	\draw[ edge ] (RE) to (M) ;
-	\draw[ edge ] (M) to (W) ;
+	%race:capital-loss, hours-per-week, sex, native-country, workclass
+	%\draw[ edge ] (RA) to (CL) ;
+	\draw[ edge ] (RA) to (H) ;
+	\draw[ edge ] (RA) to (S) ;
+	\draw[ edge ] (RA) to (N) ;
 	\draw[ edge ] (RA) to (W) ;
-	\draw[ edge ] (ED) to (O) ;
-	
-	\draw[ edge ] (H) to[in=-180,out=-90] (AI) ;
-	\draw[ edge ] (W) to (H) ;
-	\draw[ edge ] (W) to (CG) ;
-	\draw[ edge ] (W) to (CL) ;
-	\draw[ edge ] (O) to (CG) ;
-	\draw[ edge ] (O) to (CL) ;
-	
+	%sex:native-country
+	\draw[ edge ] (S) to (N) ;
+	%capital-gain:annual-income, education-num, race, capital-loss, hours-per-week, age, workclass
 	\draw[ edge ] (CG) to (AI) ;
-	\draw[ edge ] (CL) to (AI) ;
+	\draw[ edge ] (CG) to (EN) ;
+	%\draw[ edge ] (CG) to (RA) ;
+	\draw[ edge ] (CG) to (CL) ;
+	%\draw[ edge ] (CG) to (H) ;
+	%\draw[ edge ] (CG) to (AG) ;
+	\draw[ edge ] (CG) to (W) ;
+	%capital-loss:hours-per-week, education, relationship
+	%\draw[ edge ] (CL) to (H) ;
+	\draw[ edge ] (CL) to (ED) ;
+	\draw[ edge ] (CL) to (RE) ;
+	%hours-per-week:native-country, age, education, marital-status
+	\draw[ edge ] (H) to (N) ;
+	\draw[ edge ] (H) to (AG) ;
+	\draw[ edge ] (H) to[in=-30,out=-150] (ED) ;
+	\draw[ edge ] (H) to (M) ;
+	%native-country:age, workclass, education, occupation
+	\draw[ edge ] (N) to (AG) ;
+	%\draw[ edge ] (N) to (W) ;
+	\draw[ edge ] (N) to (ED) ;
+	\draw[ edge ] (N) to (O) ;
+	%annual-income:education-num, race, capital-loss, sex
+	%\draw[ edge ] (AI) to (EN) ;
+	\draw[ edge ] (AI) to (RA) ;
+	\draw[ edge ] (AI) to (CL) ;
+	\draw[ edge ] (AI) to (S) ;
 \end{tikzpicture}
